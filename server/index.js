@@ -5,12 +5,14 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import entryRoutes from "./routes/entry.js"
 import userRoutes from './routes/userRoute.js'
+
 const app = express();
+app.use(express.static(path.join(_dirname, '../client/build')))
 app.use(bodyParser.json({limit: "30mb", extended: true}))
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}))
 app.use(cors());
 dotenv.config()   
-
+app.use(express.static(path.jjoin))
 app.use('/entries', entryRoutes);
 app.use('/users', userRoutes)
 app.all('*', (req, res)=> {
