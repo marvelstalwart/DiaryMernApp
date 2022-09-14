@@ -248,7 +248,7 @@ export default function Notes() {
         </> :
             <div className='w-full '><div className=' text-gray-600 h-screen flex justify-center items-center flex-col'>
                <img className='max-w-xs md:max-w-md lg:max-w-lg z-[1]' src={empty}/>
-              <Link to="new-entry"><div className='text-dark-purple font-bold text-center'>Start your journey</div></Link> 
+              <Link to="/new-entry"><div className='text-dark-purple font-bold text-center'>Start your journey</div></Link> 
               
                 </div>        
             </div>
