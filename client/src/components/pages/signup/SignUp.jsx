@@ -60,9 +60,7 @@ useEffect(()=> {
    
   // }
   
-  if (isLoading) {
-    return ("Loading....")
-  }
+  
 
   return (
     <body className='bg-dark-purple h-screen w-screen'>
