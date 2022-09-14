@@ -43,8 +43,7 @@ export const loginUser = async (req, res)=> {
     let lowercaseEmail = email.toLowerCase()
     // const user = await userModel.findOne({email})
         userModel.findOne({lowercaseEmail})
-        .then((user)=> {4
-            bcrypt.compare(password, user.password)
+        .then((user)=> {bcrypt.compare(password, user.password)
             .then((pass)=> {
                     if (pass) {
                         res.status(200).json({
