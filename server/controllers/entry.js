@@ -26,8 +26,8 @@ export const getEntries =(req, res)=> {
         .then((entries)=> {
             let decodedEntries = entries.map((entry)=> {
                     let decrypted =  decipher.update(entry.content, "hex", "utf-8");
-
-               return {...entry.toObject(), content: decrypted + decipher.final("utf8")}
+                        decrypted+=decipher.final("utf-8")
+               return {...entry.toObject(), content: decrypted}
                 
                     
             })
