@@ -63,7 +63,7 @@ export const loginUser = async (req, res)=> {
             })
            
         })
-        .catch(err=> res.status(404).json(`Invalid User`))
+        .catch(err=> res.status(402).json(`Invalid User`))
    
         
    

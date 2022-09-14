@@ -1,8 +1,8 @@
 import Entries from "../models/entryModel.js";
 import  Entry from "../models/entryModel.js"
 import userModel from "../models/userModel.js";
-import Cryptr from 'cryptr';
-const cryptr  = new Cryptr(`${process.env.SECRET_KEY}`)
+// import Cryptr from 'cryptr';
+// const cryptr  = new Cryptr(`${process.env.SECRET_KEY}`)
 export const getEntry = (req, res)=> {
    
         Entries.findById(req.params.id)
@@ -18,13 +18,13 @@ export const getEntries =(req, res)=> {
     console.log(req.user.id)
         Entries.find({user: req.user.id} )
         .then((entries)=> {
-            let decodedEntries = entries.map((entry)=> {
-               return {...entry.toObject(), content: cryptr.decrypt(entry.content)}
+            // let decodedEntries = entries.map((entry)=> {
+            //    return {...entry.toObject(), content: cryptr.decrypt(entry.content)}
                 
                     
-            })
+            // })
 
-            res.status(200).json(decodedEntries)
+            res.status(200).json(entries)
 
              
         })
@@ -35,8 +35,8 @@ export const createEntry = (req, res)=> {
     if (!title|| !content || !category) {
         return res.status(400).send("There are missing fields")
     }
-    const encryptedContent = cryptr.encrypt(content)
-    const newEntry = new Entries({title, content: encryptedContent, category, user: id});
+    // const encryptedContent = cryptr.encrypt(content)
+    const newEntry = new Entries({title, content, category, user: id});
     newEntry.save()
     .then((post)=> res.status(201).json("Successfully inserted record") )
     .catch(err=> res.status(409).json(err.message));
