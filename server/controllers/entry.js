@@ -40,7 +40,7 @@ export const getEntries =(req, res)=> {
 
              
         })
-        .catch(err=> res.status(40).json(err.message))
+        .catch(err=> res.status(400).json(err.message))
 }
 export const createEntry = (req, res)=> {
     const {title, content, category, id} = req.body;
