@@ -40,9 +40,9 @@ export const createUser = async (req, res) => {
 
 export const loginUser = async (req, res)=> {
     const {email, password} = req.body;
-
+    let lowercaseEmail = email.toLowerCase()
     // const user = await userModel.findOne({email})
-        userModel.findOne(email.toLowerCase())
+        userModel.findOne({lowercaseEmail})
         .then((user)=> {4
             bcrypt.compare(password, user.password)
             .then((pass)=> {
