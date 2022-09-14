@@ -47,7 +47,7 @@ export default function Notes() {
             dispatch(reset())
         }
 
-    },[user, searchingFor, navigate, isError, message, dispatch, todayEntries ])
+    },[user, searchingFor, navigate, isError, message, dispatch])
    
     
     const handleChange =(e)=> {
