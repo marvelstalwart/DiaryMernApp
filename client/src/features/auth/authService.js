@@ -1,6 +1,6 @@
 import axios from 'axios';
-const  API_URL = 'http://localhost:5000/users/create'
-const LOGIN_URL = 'http://localhost:5000/users/login'
+const  API_URL = 'https://mywebdiaries.herokuapp.com/users/create'
+const LOGIN_URL = 'https://mywebdiaries.herokuapp.com//users/login'
 //Register user
 
 const register = async (userData)=> {

@@ -1,5 +1,5 @@
 import axios from "axios";
-const ENTRY_URL = "http://localhost:5000/entries";
+const ENTRY_URL = "https://mywebdiaries.herokuapp.com/entries";
 
 
 const createEntry = async (payload, token)=> {
