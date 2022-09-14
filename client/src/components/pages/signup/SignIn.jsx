@@ -40,7 +40,7 @@ export default function SignIn() {
     }
     if (isSuccess ) {
   
-      navigate('/')
+      navigate('/entries')
   
     }
     dispatch(reset())

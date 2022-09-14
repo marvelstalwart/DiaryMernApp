@@ -67,7 +67,7 @@ export default function Sidebar() {
       <div className={`${expanded && "rotate-[360deg]"}`}><NoteIcon className={`cursor-pointer duration-300 
         bg-[#1da1f2] rounded p-0.5 text-white `} fontSize='large'/></div>
     
-    <Link to='/'><h1 className={`text-white origin-left 
+    <Link to='/entries'><h1 className={`text-white origin-left 
     ${!expanded && "scale-0 "}
     font-medium text-xl
     duration-300 break-normal`}>Diary</h1></Link>

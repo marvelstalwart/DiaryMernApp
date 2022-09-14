@@ -30,7 +30,7 @@ function App() {
     
       <Routes>
       <Route element={<Layout hideHeaderPaths={["/sign-in", "/welcome", "/sign-up"]}/>}>
-      <Route path='/' exact element={<Notes/>}/>
+      <Route path='/entries' element={<Notes/>}/>
       <Route path='/new-entry' element={<NewEntry/>}/>
       <Route path='/edit/:id' element={<NewEntry/>}/>
       <Route path='/life' element={<Life/>}/>
@@ -38,7 +38,7 @@ function App() {
       <Route path='/school' element={<School/>}/>
       <Route path='/sign-in' element={<SignIn/>}/>
       <Route path='/sign-up' element={<SignUp/>}/>
-      <Route path='/welcome' element={<Welcome/>}/>
+      <Route path='/' exact element={<Welcome/>}/>
       <Route path='*' element={<NotFound/>}/>
       <Route path='/entry/:id' element={<SingleNote/>}/>
       </Route>
