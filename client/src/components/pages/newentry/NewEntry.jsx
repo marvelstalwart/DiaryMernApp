@@ -111,7 +111,7 @@ export default function NewEntry() {
            dispatch(createEntry({title: values.title, content: payload.content, category: values.category
             , id: values.id}))
            
-            navigate('/')
+            navigate('/entries')
           
           }
         }}

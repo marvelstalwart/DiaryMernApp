@@ -79,7 +79,7 @@ export default function Sidebar() {
       <span className={`${!expanded && 'scale-0'} text-[17px] origin-left duration-200`}>New</span>
     </li></Link>
 
-    <Link to='/'><li className='mt-4  text-gray-300 text-sm flex items-center
+    <Link to='/entries'><li className='mt-4  text-gray-300 text-sm flex items-center
     gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md'>
       <NotesIcon className='text-white'fontSize='medium'/>
       <span className={`${!expanded && 'scale-0'} text-[17px] origin-left duration-200`}>All</span>
