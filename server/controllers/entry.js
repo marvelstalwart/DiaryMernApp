@@ -25,7 +25,9 @@ export const getEntries =(req, res)=> {
         Entries.find({user: req.user.id} )
         .then((entries)=> {
             let decodedEntries = entries.map((entry)=> {
-               return {...entry.toObject(), content: decipher.update(entry.content, "hex", "utf-8")}
+                    let decrypted =  decipher.update(entry.content, "hex", "utf-8");
+                
+               return {...entry.toObject(), content: decrypted.final("utf8")}
                 
                     
             })
