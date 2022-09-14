@@ -8,7 +8,7 @@ const initVector = crypto.randomBytes(16);
 const Securitykey = crypto.randomBytes(32);
 const SECRET_KEY = process.env.SECRET_KEY;
 const cipher = crypto.createCipheriv(algorithm, Securitykey, initVector)
-const decipher = crypto.createDecipheriv(algorithm, Securitykey, initVector)
+
 export const getEntry = (req, res)=> {
    
         Entries.findById(req.params.id)
@@ -24,6 +24,7 @@ export const getEntries =(req, res)=> {
     console.log(req.user.id)
         Entries.find({user: req.user.id} )
         .then((entries)=> {
+            const decipher = crypto.createDecipheriv(algorithm, Securitykey, initVector)
             let decodedEntries = entries.map((entry)=> {
                     let decrypted =  decipher.update(entry.content, "hex", "utf-8");
                         decrypted+=decipher.final("utf-8")
