@@ -2,8 +2,13 @@ import Entries from "../models/entryModel.js";
 import  Entry from "../models/entryModel.js"
 import userModel from "../models/userModel.js";
 import Cryptr from 'cryptr';
+import crypto from "crypto";
+const algorithm = "aes-256-cbc"; 
+const initVector = crypto.randomBytes(16);
+const Securitykey = crypto.randomBytes(32);
 const SECRET_KEY = process.env.SECRET_KEY;
-const cryptr  = new Cryptr(`${SECRET_KEY}`)
+const cipher = crypto.createCipheriv(algorithm, Securitykey, initVector)
+const decipher = crypto.createDecipheriv(algorithm, Securitykey, initVector)
 export const getEntry = (req, res)=> {
    
         Entries.findById(req.params.id)
@@ -20,12 +25,13 @@ export const getEntries =(req, res)=> {
         Entries.find({user: req.user.id} )
         .then((entries)=> {
             let decodedEntries = entries.map((entry)=> {
-               return {...entry.toObject(), content: cryptr.decrypt(entry.content)}
+               return {...entry.toObject(), content: decipher.update(entry.content, "hex", "utf-8")}
                 
                     
             })
-
+            
             res.status(200).json(decodedEntries)
+            
 
              
         })
@@ -36,7 +42,8 @@ export const createEntry = (req, res)=> {
     if (!title|| !content || !category) {
         return res.status(400).send("There are missing fields")
     }
-    const encryptedContent = cryptr.encrypt(content)
+    let encryptedContent = cipher.update(content, "utf-8", "hex")
+    encryptedContent += cipher.final("hex");
     const newEntry = new Entries({title, content: encryptedContent, category, user: id});
     newEntry.save()
     .then((post)=> res.status(201).json("Successfully inserted record") )
