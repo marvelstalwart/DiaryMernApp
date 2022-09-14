@@ -42,7 +42,7 @@ export const loginUser = async (req, res)=> {
     const {email, password} = req.body;
     // const user = await userModel.findOne({email})
         userModel.findOne({email})
-        .then((user)=> {
+        .then((user)=> {4
             bcrypt.compare(password, user.password)
             .then((pass)=> {
                     if (pass) {
@@ -63,14 +63,14 @@ export const loginUser = async (req, res)=> {
             })
            
         })
-        .catch(err=> res.status(402).json(`Invalid User`))
+        .catch(err=> res.status(404).json(`Invalid User`))
    
         
    
 }
 
 const generateToken  = (id)=> {
-    return jwt.sign({id}, `${process.env.SECRET_KEY}`, {expiresIn: '2d',})
+    return jwt.sign({id}, `${process.env.JWT_KEY}`, {expiresIn: '2d',})
 }
 
 export const getMe = async (req, res) => {
