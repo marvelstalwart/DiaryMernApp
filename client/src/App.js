@@ -29,7 +29,7 @@ function App() {
    
     
       <Routes>
-      <Route element={<Layout hideHeaderPaths={["/sign-in", "/welcome", "/sign-up"]}/>}>
+      <Route element={<Layout hideHeaderPaths={["/sign-in", "/", "/sign-up"]}/>}>
       <Route path='/entries' element={<Notes/>}/>
       <Route path='/new-entry' element={<NewEntry/>}/>
       <Route path='/edit/:id' element={<NewEntry/>}/>
